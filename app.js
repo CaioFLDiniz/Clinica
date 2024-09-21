@@ -36,19 +36,45 @@ function listarClientes() {
     let clientsList = document.getElementById('clients');
     clientsList.innerHTML = '';
 
-    clients.forEach(cliente => {
+    clients.forEach((cliente, index) => {
         let listItem = document.createElement('li');
+        listItem.className = 'cliente-item';
         listItem.innerHTML = `
             <strong>${cliente.name}</strong><br>
             <em>Prontuário: ${cliente.prontuario}</em><br>
             Telefone: ${cliente.phone}<br>
             Email: ${cliente.email}<br>
-            Endereço: ${cliente.address}, CEP: ${cliente.cep}<br>
-            Plano de Saúde: ${cliente.healthPlan}<br>
-            ${cliente.photo ? `<img src="${cliente.photo}" width="100">` : ''}
         `;
+        listItem.addEventListener('click', function() {
+            exibirProntuario(index);
+        });
         clientsList.appendChild(listItem);
     });
+}
+
+function exibirProntuario(index) {
+    let clients = JSON.parse(localStorage.getItem('clients')) || [];
+    let cliente = clients[index];
+
+    let prontuarioInfo = document.getElementById('prontuarioInfo');
+    prontuarioInfo.innerHTML = `
+        <strong>Nome:</strong> ${cliente.name}<br>
+        <strong>Prontuário:</strong> ${cliente.prontuario}<br>
+        <strong>Telefones:</strong> ${cliente.phone}<br>
+        <strong>Email:</strong> ${cliente.email}<br>
+        <strong>Endereço:</strong> ${cliente.address}, CEP: ${cliente.cep}<br>
+        <strong>Plano de Saúde:</strong> ${cliente.healthPlan}<br>
+        ${cliente.photo ? `<img src="${cliente.photo}" width="100">` : ''}
+    `;
+
+    // Alternar visibilidade entre a lista de clientes e o prontuário
+    document.getElementById('clientList').style.display = 'none';
+    document.getElementById('clientProntuario').style.display = 'block';
+}
+
+function voltarLista() {
+    document.getElementById('clientProntuario').style.display = 'none';
+    document.getElementById('clientList').style.display = 'block';
 }
 
 function gerarProntuario() {
