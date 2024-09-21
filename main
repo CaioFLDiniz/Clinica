@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Clientes</title>
     <style>
-        form {
+        /* Estilo do formulário e layout */
+        form, #clientProntuario {
             max-width: 400px;
             margin: 0 auto;
             padding: 20px;
@@ -33,11 +34,23 @@
             cursor: pointer;
             width: 100%;
         }
+
+        /* Esconde a aba de prontuário por padrão */
+        #clientProntuario {
+            display: none;
+        }
+
+        .cliente-item {
+            cursor: pointer;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
     <h2>Cadastro de Clientes</h2>
     <form id="clientForm">
+        <!-- Campos de cadastro -->
         <label for="name">Nome Completo:</label>
         <input type="text" id="name" required>
 
@@ -69,6 +82,13 @@
     <div id="clientList">
         <h3>Lista de Clientes</h3>
         <ul id="clients"></ul>
+    </div>
+
+    <!-- Nova aba de prontuário -->
+    <div id="clientProntuario">
+        <h3>Prontuário do Paciente</h3>
+        <div id="prontuarioInfo"></div>
+        <button onclick="voltarLista()">Voltar à Lista de Clientes</button>
     </div>
 
     <script src="app.js"></script>
