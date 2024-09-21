@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes</title>
+    <style>
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="file"] {
+            padding: 0;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cadastro de Clientes</h2>
+    <form id="clientForm">
+        <label for="name">Nome Completo:</label>
+        <input type="text" id="name" required>
+
+        <label for="phone">Telefones:</label>
+        <input type="text" id="phone" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="address">Endereço:</label>
+        <input type="text" id="address" required>
+
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" required>
+
+        <label for="photo">Foto:</label>
+        <input type="file" id="photo" accept="image/*">
+
+        <label for="healthPlan">Plano de Saúde:</label>
+        <select id="healthPlan" required>
+            <option value="Basico">Básico</option>
+            <option value="Intermediario">Intermediário</option>
+            <option value="Premium">Premium</option>
+        </select>
+
+        <button type="submit">Cadastrar Cliente</button>
+    </form>
+
+    <div id="clientList">
+        <h3>Lista de Clientes</h3>
+        <ul id="clients"></ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
